@@ -66,24 +66,17 @@ int mx(TrieNode* head,int* a,int n)
 	return m;
 }
 int main() {
-    int n,a[100001];
+    int n,a[1000001];
 	cin>>n;
     TrieNode* head=new TrieNode();
+    int x=0;
     for(int i=0;i<n;i++)
     {   cin>>a[i];
-     //insert(a[i],head);
+     a[i]=x^a[i];
+     x=a[i];
+     //cout<<a[i]<<endl;
+     insert(a[i],head);
     }
-    int m=INT_MIN;
-    for(int i=0;i<n;i++)
-    {
-        int v=a[i];
-        for(int j=i;j<n;j++)
-        {
-            v=v^a[j];
-        }
-        if(v>m)
-            m=v;
-    }
-    cout<<m;
+    cout<<mx(head,a,n);
 	return 0;
 }
